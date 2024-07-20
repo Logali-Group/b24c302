@@ -1,0 +1,81 @@
+_schema-version: "3.2"
+ID: b24c302-ii
+version: 0.0.1
+modules:
+- name: b24c302-ii-approuter
+  type: approuter.nodejs
+  path: b24c302-ii-approuter
+  requires:
+  - name: b24c302-ii_html_repo_runtime
+  - name: uaa_b24c302-ii
+  - name: b24c302-ii-destination-service
+    group: destinations
+    properties:
+      forwardAuthToken: false
+      name: ui5
+      url: https://ui5.sap.com
+  parameters:
+    disk-quota: 256M
+    memory: 256M
+- name: b24c302-ii_ui_deployer
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: b24c302-ii_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - b24c302.zip
+      name: b24c302
+      target-path: resources/
+- name: b24c302
+  type: html5
+  path: b24c302
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: b24c302-ii_html_repo_runtime
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-runtime
+- name: uaa_b24c302-ii
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: b24c302-ii-xsuaa-service
+    service-plan: application
+- name: b24c302-ii_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-host
+- name: b24c302-ii-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: false
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: b24c302-ii-destination-service
+    service-plan: lite
+parameters:
+  deploy_mode: html5-repo

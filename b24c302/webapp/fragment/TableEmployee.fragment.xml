@@ -1,0 +1,50 @@
+<core:FragmentDefinition
+            xmlns="sap.m"
+            xmlns:core="sap.ui.core">
+
+
+        <Panel>
+
+            <Table id="table"
+                    items="{jsonEmployees>/Employees}">
+
+                <columns>
+
+                    <Column>
+                        <Label text="{i18n>ID}"/>
+                    </Column>
+
+                    <Column>
+                        <Label text="{i18n>fullName}"/>
+                    </Column>
+
+                    <Column>
+                        <Label text="{i18n>country}"/>
+                    </Column>
+
+                    <Column>
+                        <Label text="{i18n>showDetails}"/>
+                    </Column>
+
+                </columns>
+
+                <items>
+
+                    <ColumnListItem>
+                        <cells>
+
+                            <ObjectIdentifier title="{jsonEmployees>EmployeeID}"/>
+                            <Text text="{jsonEmployees>FirstName}, {jsonEmployees>LastName}"/>
+                            <Text text="{jsonEmployees>Country}"/>
+                            <core:Icon src="show"
+                                            press="onOpenOrders"/>
+                        </cells>
+                    </ColumnListItem>
+                
+                </items>
+
+            </Table>
+
+        </Panel>
+
+</core:FragmentDefinition>
