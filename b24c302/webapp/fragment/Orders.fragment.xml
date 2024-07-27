@@ -42,6 +42,22 @@
             </Table>
         </content>
 
+        <endButton>
+            <Button id="cancel"
+                    text="{i18n>cancel}"
+                    type="Reject"
+                    press="onCloseDialog"
+                    width="6rem"/>
+        </endButton>
+
+        <beginButton>
+            <Button id="navto"
+                    text="{i18n>navto}"
+                    type="Accept"
+                    press="onNavToDetails"
+                    width="6rem"/>
+        </beginButton>
+
     </Dialog>
 
 </core:FragmentDefinition>

@@ -78,28 +78,24 @@
       },
       "routes": [
         {
-          "name": "RouteApp",
-          "pattern": ":?query:",
+          "name": "RouteMain",
+          "pattern": "",
           "target": [
-            "TargetApp"
+            "TargetMain"
           ]
         }
       ],
       "targets": {
-        "TargetApp": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "App",
-          "viewName": "App"
+        "TargetMain": {
+          "viewName": "Main"
         }
       }
     },
     "rootView": {
-      "viewName": "b24c302.view.App",
+      "viewName": "b24c302.view.Main",
       "type": "XML",
       "async": true,
-      "id": "App"
+      "id": "Main"
     }
   }
 }

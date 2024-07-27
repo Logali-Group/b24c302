@@ -1,0 +1,43 @@
+{
+
+    "ActiveCode": "OneColumn",
+    "Layout": [
+        {
+            "Code": "OneColumn",
+            "Layout": "One Column"
+        },
+        {
+            "Code": "TwoColumnsBeginExpanded",
+            "Layout": "Two Columns - Begin Expanded"
+        },
+        {
+            "Code": "TwoColumnsMidExpanded",
+            "Layout": "Two Columns - Mid Expanded"
+        },
+        {
+            "Code": "MidColumnFullScreen",
+            "Layout": "Mid Column - Full Screen"
+        },
+        {
+            "Code": "ThreeColumnsMidExpanded",
+            "Layout": "Three Columns - Mid Expanded"
+        },
+        {
+            "Code": "ThreeColumnsEndExpanded",
+            "Layout": "Three Columns - End Expanded"
+        },
+        {
+            "Code": "ThreeColumnsMidExpandedEndHidden",
+            "Layout": "Three Columns - Mid Expanded End Hidden"
+        },
+        {
+            "Code": "ThreeColumnsBeginExpandedEndHidden",
+            "Layout": "Three Columns - Begin Expanded End Hidden"
+        },
+        {
+            "Code": "EndColumnFullScreen",
+            "Layout": "End Column - Full Screen"
+        }
+    ]
+
+}

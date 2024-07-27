@@ -30,7 +30,7 @@
 
                 <items>
 
-                    <ColumnListItem>
+                    <ColumnListItem type="Navigation" press="onNavToDetails">
                         <cells>
 
                             <ObjectIdentifier title="{jsonEmployees>EmployeeID}"/>
