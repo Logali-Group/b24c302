@@ -61,6 +61,32 @@
                 
                 </FlexBox>
             
+            </Panel>
+
+            <Panel class="sapUiSizeCompact" 
+                    backgroundDesign="Transparent">
+
+                <headerToolbar>
+
+                    <Toolbar>
+
+                        <Title text="{i18n>incidence} {= ${jsonEmployees>Country} !== 'US' ? ${i18n>europe} : ${i18n>us} }"/>
+                        <ToolbarSpacer/>
+                        <Button text="{i18n>createIncidence}"
+                                press="onCreateIncidence"/>
+                    
+                    </Toolbar>
+                
+                </headerToolbar>
+
+                <content>
+
+                    <Panel id="tableIncidence" 
+                            class="sapUiNoContentPadding"
+                            backgroundDesign="Transparent"/>
+
+                </content>
+
             
             </Panel>
 

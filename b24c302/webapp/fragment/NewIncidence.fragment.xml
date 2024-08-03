@@ -1,0 +1,56 @@
+<core:FragmentDefinition
+                    xmlns="sap.m"
+                    xmlns:core="sap.ui.core">
+
+        <Panel>
+
+            <headerToolbar>
+
+                <Toolbar>
+                    <core:Icon src="{=
+                        ${incidenceModel>status} === '0' ? 'accept' :
+                        ${incidenceModel>status} === '1' ? 'pending':
+                        ${incidenceModel>status} === '2' ? 'error' : 'alert'
+                    }"/>
+                    <Title text="{i18n>incidence} ({incidenceModel>number}) {path: 'incidenceModel>date', formatter: '.myFormatter.dateFormat'}"/>
+                
+                </Toolbar>
+            
+            </headerToolbar>
+
+            <content>
+
+                <HBox>
+
+                    <VBox class="sapUiSmallMarginEnd">
+                        <Text text="{i18n>incidenceDate}"/>
+                        <DatePicker dateValue="{incidenceModel>date}"/>
+                    </VBox>
+
+                    <VBox class="sapUiSmallMarginEnd"
+                            visible="{=
+                                ${incidenceModel>date} === undefined ? false : true
+                            }">
+                        <Text text="{i18n>incidenceReason}"/>
+                        <Input value="{incidenceModel>reason}"/>
+                    </VBox>
+
+                    <VBox visible="{=
+                                ${incidenceModel>date} === undefined ? false : true
+                            }">
+                        <Text text="{i18n>incidenceType}"/>
+                        <Select selectedKey="{incidenceModel>status}"
+                                    forceSelection="false">
+                            <core:Item key="0" text="{i18n>incidenceCorrect}"/>
+                            <core:Item key="1" text="{i18n>incidencePending}"/>
+                            <core:Item key="2" text="{i18n>incidenceError}"/>
+                        </Select>
+                    </VBox>
+                
+                </HBox>
+            
+            </content>
+        
+        </Panel>
+
+</core:FragmentDefinition>
