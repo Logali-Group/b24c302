@@ -6,7 +6,7 @@
         <Panel>
 
             <Table id="table"
-                    items="{jsonEmployees>/Employees}">
+                    items="{northwind>/Employees}">
 
                 <columns>
 
@@ -33,9 +33,9 @@
                     <ColumnListItem type="Navigation" press="onNavToDetails">
                         <cells>
 
-                            <ObjectIdentifier title="{jsonEmployees>EmployeeID}"/>
-                            <Text text="{jsonEmployees>FirstName}, {jsonEmployees>LastName}"/>
-                            <Text text="{jsonEmployees>Country}"/>
+                            <ObjectIdentifier title="{northwind>EmployeeID}"/>
+                            <Text text="{northwind>FirstName}, {northwind>LastName}"/>
+                            <Text text="{northwind>Country}"/>
                             <core:Icon src="show"
                                             press="onOpenOrders"/>
                         </cells>

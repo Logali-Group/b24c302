@@ -15,6 +15,13 @@ server:
             - /resources
             - /test-resources
           url: https://ui5.sap.com
+        backend:
+          - path: /v2
+            url: https://services.odata.org
+            destination: Northwind
+          - path: /sap
+            url: http://erp13.sap4practice.com:9037
+            destination: ERP13
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:

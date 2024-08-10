@@ -13,7 +13,7 @@
 
                     <items>
 
-                        <Text text="{jsonEmployees>FirstName}, {jsonEmployees>LastName}" class="boldText"/>
+                        <Text text="{northwind>FirstName}, {northwind>LastName}" class="boldText"/>
                     
                     </items>
                 
@@ -25,12 +25,12 @@
 
                         <VBox>
                             <Text text="{i18n>employeeID}:" class="boldText sapUiTinyMarginEnd"/>
-                            <Text text="{jsonEmployees>EmployeeID}"/>
+                            <Text text="{northwind>EmployeeID}"/>
                         </VBox>
 
                         <VBox>
                             <Text text="{i18n>titleEmployee}:" class="boldText"/>
-                            <Text text="{jsonEmployees>Title}"/>
+                            <Text text="{northwind>Title}"/>
                         </VBox>
                     
                     </items>
@@ -43,18 +43,18 @@
 
                         <HBox>
                             <Text text="{i18n>countryCode}:" class="boldText sapUiTinyMarginEnd"/>
-                            <Text text="{jsonEmployees>Country}"/>
+                            <Text text="{northwind>Country}"/>
                         </HBox>
 
                         <HBox>
                             <Text text="{i18n>city}:" class="boldText sapUiTinyMarginEnd"/>
-                            <Text text="{jsonEmployees>City}"/>
+                            <Text text="{northwind>City}"/>
                         </HBox>
 
 
                         <HBox>
                             <Text text="{i18n>postalCode}:" class="boldText sapUiTinyMarginEnd"/>
-                            <Text text="{jsonEmployees>PostalCode}"/>
+                            <Text text="{northwind>PostalCode}"/>
                         </HBox>
                     
                     </items>
@@ -70,7 +70,7 @@
 
                     <Toolbar>
 
-                        <Title text="{i18n>incidence} {= ${jsonEmployees>Country} !== 'US' ? ${i18n>europe} : ${i18n>us} }"/>
+                        <Title text="{i18n>incidence} {= ${northwind>Country} !== 'US' ? ${i18n>europe} : ${i18n>us} }"/>
                         <ToolbarSpacer/>
                         <Button text="{i18n>createIncidence}"
                                 press="onCreateIncidence"/>

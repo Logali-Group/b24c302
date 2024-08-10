@@ -9,7 +9,7 @@ sap.ui.define([
         myFormatter: formatter,
 
         onInit: function () {
-            
+            this.oEventBus = sap.ui.getCore().getEventBus();
         },
 
         onCreateIncidence: function () {
@@ -26,6 +26,17 @@ sap.ui.define([
                 oNewIncidence.bindElement("incidenceModel>/"+iIndex);
                 oTableIncidence.addContent(oNewIncidence);
 
+        },
+
+        onSaveIncidence: function (oEvent) {
+
+            let oSource = oEvent.getSource().getParent().getParent();
+            let oBindingContext = oSource.getBindingContext("incidenceModel");
+            this.oEventBus.publish("incidence","onSaveODataIncidence",oBindingContext);
+
+            // console.log(oSource);
+            // let oModelIncidence = this.getView().getModel("incidenceModel");
+            // console.log(oModelIncidence.getData());
         }
 
     });

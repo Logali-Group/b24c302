@@ -2,15 +2,23 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-    "sap/ui/core/Fragment"
+    "sap/ui/core/Fragment",
+    "sap/ui/model/json/JSONModel"
 ],
-function (Controller, Filter, FilterOperator, Fragment) {
+function (Controller, Filter, FilterOperator, Fragment, JSONModel) {
     "use strict";
 
     return Controller.extend("b24c302.controller.MasterEmployee", {
 
         onInit: function () {
+            this._loadCountries();
             this.oEventBus = sap.ui.getCore().getEventBus();
+        },
+
+        _loadCountries: function () {
+            let oModelCountries = new JSONModel();
+                oModelCountries.loadData("../model/Countries.json");
+            this.getView().setModel(oModelCountries, "jsonCountries");
         },
 
         onValidate: function () {
@@ -30,15 +38,20 @@ function (Controller, Filter, FilterOperator, Fragment) {
                 sEmployee = oModelCountries.getProperty("/EmployeeId"),
                 sCode = oModelCountries.getProperty("/CountryCode");
 
+                console.log(sEmployee);
+                console.log(sCode);
+
             let aFilters = [];
 
             if (sEmployee) {
-                aFilters.push(new Filter("EmployeeID", FilterOperator.Contains, sEmployee));
+                aFilters.push(new Filter("EmployeeID", FilterOperator.EQ, sEmployee));
             }
 
             if (sCode) {
-                aFilters.push(new Filter("Country", FilterOperator.EQ, sCode));
+                aFilters.push(new Filter("Country", FilterOperator.Contains, sCode));
             }
+
+            console.log(aFilters);
 
             let oTable = this.getView().byId("table"),
                 oBinding = oTable.getBinding("items");
@@ -55,7 +68,7 @@ function (Controller, Filter, FilterOperator, Fragment) {
         onOpenOrders: function (oEvent) {
 
             let oItem = oEvent.getSource(),
-                oBindingContext = oItem.getBindingContext("jsonEmployees"),
+                oBindingContext = oItem.getBindingContext("northwind"),
                 sPath = oBindingContext.getPath(),
                 oView = this.getView();
 
@@ -73,7 +86,7 @@ function (Controller, Filter, FilterOperator, Fragment) {
                 this._pDialog.then(function (oDialog) {
                     oDialog.bindElement({
                         path: sPath,
-                        model: 'jsonEmployees'
+                        model: 'northwind'
                     });
                     oDialog.open();
                 });
@@ -85,7 +98,7 @@ function (Controller, Filter, FilterOperator, Fragment) {
 
             // this._pDialog.bindElement({
             //     path: sPath,
-            //     model: 'jsonEmployees'
+            //     model: 'northwind'
             // });
 
             // this._pDialog.open();
@@ -99,7 +112,7 @@ function (Controller, Filter, FilterOperator, Fragment) {
 
         onNavToDetails: function (oEvent) {
             let oItem = oEvent.getSource(),
-                oBindingContext = oItem.getBindingContext("jsonEmployees");
+                oBindingContext = oItem.getBindingContext("northwind");
             this.oEventBus.publish("flexible","showEmployeeDetails", oBindingContext);
         }
     });
