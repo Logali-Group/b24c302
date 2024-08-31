@@ -12,11 +12,16 @@
                         ${incidenceModel>Type} === '1' ? 'pending':
                         ${incidenceModel>Type} === '2' ? 'error' : 'alert'
                     }"/>
-                    <Title text="{i18n>incidence} ({incidenceModel>number}) {path: 'incidenceModel>CreationDate', formatter: '.myFormatter.dateFormat'}"/>
+                    <Title text="{i18n>incidence} ({= ${incidenceModel>IncidenceId} ? parseInt(${incidenceModel>IncidenceId}) : '' }) 
+                        {path: 'incidenceModel>CreationDate', formatter: '.myFormatter.dateFormat'}"/>
                     <ToolbarSpacer />
                     <Button
                             icon="sap-icon://save"
                             press="onSaveIncidence"/>
+                    <Button 
+                            icon="sap-icon://delete"
+                            press="onDeleteIncidence"
+                            type="Reject"/>
                 </Toolbar>
             
             </headerToolbar>
@@ -27,7 +32,8 @@
 
                     <VBox class="sapUiSmallMarginEnd">
                         <Text text="{i18n>incidenceDate}"/>
-                        <DatePicker dateValue="{incidenceModel>CreationDate}"/>
+                        <DatePicker dateValue="{incidenceModel>CreationDate}"
+                                    change="updateIncidenceCreationDate"/>
                     </VBox>
 
                     <VBox class="sapUiSmallMarginEnd"
@@ -35,7 +41,8 @@
                                 ${incidenceModel>CreationDate} === undefined ? false : true
                             }">
                         <Text text="{i18n>incidenceReason}"/>
-                        <Input value="{incidenceModel>Reason}"/>
+                        <Input value="{incidenceModel>Reason}"
+                                liveChange="updateIncidenceReason"/>
                     </VBox>
 
                     <VBox visible="{=
@@ -43,7 +50,8 @@
                             }">
                         <Text text="{i18n>incidenceType}"/>
                         <Select selectedKey="{incidenceModel>Type}"
-                                    forceSelection="false">
+                                    forceSelection="false"
+                                    change="updateIncidenceType">
                             <core:Item key="0" text="{i18n>incidenceCorrect}"/>
                             <core:Item key="1" text="{i18n>incidencePending}"/>
                             <core:Item key="2" text="{i18n>incidenceError}"/>

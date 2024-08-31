@@ -80,7 +80,8 @@
             "erp13":{
                 "dataSource": "erp13",
                 "settings": {
-                    "useBatch": false
+                    "useBatch": false,
+                    "defaultUpdateMethod":"Put"
                 }
             }
         },

@@ -37,6 +37,33 @@ sap.ui.define([
             // console.log(oSource);
             // let oModelIncidence = this.getView().getModel("incidenceModel");
             // console.log(oModelIncidence.getData());
+        },
+
+        updateIncidenceCreationDate: function (oEvent) {
+            let oSource = oEvent.getSource(),
+                oBindingContext = oSource.getBindingContext("incidenceModel"),
+                oObject = oBindingContext.getObject();
+                oObject.CreationDateX = true;
+        },
+
+        updateIncidenceReason: function (oEvent) {
+            let oSource = oEvent.getSource(),
+                oBindingContext = oSource.getBindingContext("incidenceModel"),
+                oObject = oBindingContext.getObject();
+                oObject.ReasonX = true;
+        },
+
+        updateIncidenceType: function (oEvent) {
+            let oSource = oEvent.getSource(),
+                oBindingContext = oSource.getBindingContext("incidenceModel"),
+                oObject = oBindingContext.getObject();
+                oObject.TypeX = true;
+        },
+
+        onDeleteIncidence: function (oEvent) {
+            let oSource = oEvent.getSource().getParent().getParent();
+            let oBindingContext = oSource.getBindingContext("incidenceModel");
+            this.oEventBus.publish("incidence","onDeleteIncidence",oBindingContext);
         }
 
     });
