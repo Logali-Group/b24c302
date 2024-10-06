@@ -90,6 +90,11 @@
                 {
                     "uri": "css/style.css"
                 }
+            ],
+            "js":[
+                {
+                    "uri": "utils/SignaturePad.js"
+                }
             ]
         },
         "routing": {
@@ -106,19 +111,26 @@
                 {
                     "name": "RouteMain",
                     "pattern": "",
-                    "target": [
-                        "TargetMain"
-                    ]
+                    "target": "TargetMain"
+                    
+                },
+                {
+                    "name": "RouteDetails",
+                    "pattern": "OrderDetails/{ID}",
+                    "target": "TargetDetails"
                 }
             ],
             "targets": {
                 "TargetMain": {
                     "viewName": "Main"
+                },
+                "TargetDetails":{
+                    "viewName": "OrderDetails"
                 }
             }
         },
         "rootView": {
-            "viewName": "b24c302.view.Main",
+            "viewName": "b24c302.view.App",
             "type": "XML",
             "async": true,
             "id": "Main"

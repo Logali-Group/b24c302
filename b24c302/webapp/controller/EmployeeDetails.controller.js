@@ -64,6 +64,19 @@ sap.ui.define([
             let oSource = oEvent.getSource().getParent().getParent();
             let oBindingContext = oSource.getBindingContext("incidenceModel");
             this.oEventBus.publish("incidence","onDeleteIncidence",oBindingContext);
+        },
+
+        onNavToDetails: function (oEvent) {
+            let oItem = oEvent.getSource(),
+                oBindingContext = oItem.getBindingContext("northwind"),
+                oObject = oBindingContext.getObject(),
+                iOrderID = oBindingContext.getProperty("OrderID");
+
+            let oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+
+                oRouter.navTo("RouteDetails",{
+                    ID: iOrderID
+                });
         }
 
     });

@@ -5,41 +5,10 @@
     <Dialog>
     
         <content>
-            <Table items="{northwind>Orders}">
 
-                    <columns>
+            <core:Fragment fragmentName="b24c302.fragment.TableOrders"
+                            type="XML"/>
 
-                        <Column>
-                            <Label text="{i18n>OrderID}"/>
-                        </Column>
-
-                        <Column>
-                            <Label text="{i18n>Freight}"/>
-                        </Column>
-
-                        <Column>
-                            <Label text="{i18n>ShipAddress}"/>
-                        </Column>
-                    
-                    </columns>
-
-                    <items>
-
-                        <ColumnListItem>
-
-                            <cells>
-
-                                <Text text="{northwind>OrderID}"/>
-                                <Text text="{northwind>Freight}"/>
-                                <Text text="{northwind>ShipAddress}"/>
-                            
-                            </cells>
-
-                        </ColumnListItem>
-                    
-                    </items>
-
-            </Table>
         </content>
 
         <endButton>
